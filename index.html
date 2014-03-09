@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fargo Peepers</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	<style>
+	body {
+	font-family: sans-serif;
+    font-size: small;
+	margin: 0;
+}
+
+#map {
+	height: 1000px;
+	width: 100%;
+}
+
+ul {
+    display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	display: inline;
+	margin: 10px;
+	text-decoration: underline;
+	list-style: none;
+	cursor: pointer;
+}
+
+#tag {
+    width: 100px;
+    margin: 3px;
+}
+	#header
+	{
+	width: 100%;
+	text-align: center;
+	z-index: 1000000;
+	font-size: 58px;
+	}
+	.overlay {
+			position:absolute; 
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			color: white;
+		
+		}
+		.title {
+			top:10px;
+			right:10px;
+		}
+	</style>
+</head>
+<body>
+    <div id="map" ><div class="overlay title" id="header"><h1>Fargo Peepers</h1></div></div>
+
+		<script>
+	var map = L.map('map', {
+	center: [46.872201, -96.812393],
+	maxZoom: 17,
+	zoom: 15,
+	zoomControl: false
+});
+
+L.tileLayer('http://b.tiles.mapbox.com/v3/oslek.map-izae70ik/{z}/{x}/{y}.png').addTo(map);
+
+
+$.getJSON("http://api.hackfargo.co/calls/type/Peeper?start=6-10-2012&end=3-3-2014",function(data) { 
+
+            $.each(data, function(i, item)
+           {
+              
+           var late =item.Lat;
+            var lon = item.Long;
+			var date = item.Meta.DateString;
+			var address = item.Meta.Address;
+			var description = "There was a peeper reported at "+address+" on "+date;
+			populatePeepers(late, lon, description);
+            });
+});
+
+function populatePeepers(lat, lon, description)
+{
+L.circle([lat, lon], 105.7, {
+	color: 'red',
+	fillColor: '#f03',
+	fillOpacity: 0.5,
+	weight: 1
+}).bindPopup(description).addTo(map);
+
+}
+
+	</script>
+</body>
+</html>
