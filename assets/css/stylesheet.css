@@ -39,15 +39,15 @@ body {
   position: relative;
   padding-top: 3.6em;
   /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)60";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)80";
   /* IE 5-7 */
-  filter: alpha(opacity=60);
+  filter: alpha(opacity=80);
   /* Netscape */
-  -moz-opacity: 0.6;
+  -moz-opacity: 0.8;
   /* Safari 1.x */
-  -khtml-opacity: 0.6;
+  -khtml-opacity: 0.8;
   /* Good browsers */
-  opacity: 0.6; }
+  opacity: 0.8; }
 
 h1, h2 {
   color: red;
@@ -57,7 +57,7 @@ h1, h2 {
 h2 {
   margin-bottom: 0;
   padding-bottom: 0;
-  padding-top: 1em;
+  padding-top: 0.5em;
   font-size: 3em; }
 
 h1 {
