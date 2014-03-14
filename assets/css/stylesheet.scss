@@ -70,7 +70,7 @@ body {
     position: relative;
     @extend .center-on-top;
     padding-top: $base-font-size*1.2; 
-    @include transparency(0.6);
+    @include transparency(0.8);
 }
 
 h1, h2 {
