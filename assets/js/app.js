@@ -6,11 +6,10 @@ var map = L.map('map', {
 });
 
 
-// Sri Map 1: sri.hh2oangj
-// Sri Map 2: sri.hh32e6nd
-
-// Shane's Mapbox URL
+// Shane's Mapbox Map
 // L.tileLayer('http://b.tiles.mapbox.com/v3/oslek.map-izae70ik/{z}/{x}/{y}.png').addTo(map);
+//
+// Sri's Mapbox Map
 L.tileLayer('http://a.tiles.mapbox.com/v3/sri.hh32e6nd/{z}/{x}/{y}.png').addTo(map);
 
 
@@ -24,6 +23,7 @@ $.getJSON("http://api.hackfargo.co/calls/type/Peeper?start=6-10-2012&end=3-13-20
 		populatePeepers(late, lon, description);
 	});
 });
+
 
 function populatePeepers(lat, lon, description) {
 	L.circle([lat, lon], 105.7, {
